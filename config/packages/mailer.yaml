@@ -1,0 +1,9 @@
+framework:
+    mailer:
+        dsn: '%env(MAILER_DSN)%'
+        envelope:
+            sender: '%env(MAILER_ENVELOPE_SENDER)%'
+            recipients: ['%env(MAILER_ENVELOPE_RECIPIENT)%']
+        headers:
+            From: '%env(MAILER_HEADERS_FROM)%'
+            To: '%env(MAILER_ENVELOPE_RECIPIENT)%'

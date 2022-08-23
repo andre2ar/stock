@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block pagetitle %} Stock {% endblock %}
+
+
+{% block main %}
+    <a href="{{ path('stock_new_form') }}">Add new item</a>
+
+    <form method="get">
+        <p>
+            <label>
+                Current page:
+                <input
+                        type="number"
+                        name="page"
+                        value="{{ page }}"
+                        min="1"
+                        max="{{ lastPage }}"
+                        type="submit"
+                >
+            </label>
+
+            <button>Go</button>
+        </p>
+        <p> Last page: <b>{{ lastPage }}</b> </p>
+    </form>
+
+    <table>
+        <tr>
+            <th>SKU</th>
+            <th>Branch</th>
+            <th>Stock</th>
+        </tr>
+        {% for product in paginator.results %}
+            <tr>
+                <td>{{ product.sku }}</td>
+                <td>{{ product.branch }}</td>
+                <td>{{ product.stock }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
